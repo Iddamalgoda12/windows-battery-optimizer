@@ -10,14 +10,11 @@ struct ProcessInfo
     std::wstring name;
 };
 
-enum class ProcessOpcode
-{
-    Start = 1,
-    End = 2
-};
-
 extern std::unordered_map<DWORD, ProcessInfo> processCache;
 
 void startProcessMonitoring();
 void loadInitialProcesses();
+std::wstring getProcessName(DWORD pid);
+void handleProcessEnd(DWORD pid);
+void handleProcessStart(DWORD pid);
 void startRealtimeMonitoring();
